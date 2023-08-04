@@ -1,0 +1,34 @@
+body {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+#app {
+  display:flex;
+  flex-flow: row wrap;
+}
+#container {
+  display: flex;
+}
+#sorted-students {
+  display:flex;
+  flex-flow: row wrap;
+}
+#container {
+  display:flex;
+}
+#dark-side {
+  display:flex;
+  flex-flow: row wrap;
+}
+.sorted {
+  display: flex;
+  align-content: flex-start;
+  flex: 1;
+}
+.card {
+  margin: 10px;
+}
+img{
+height:280px;
+width:270px;
+}
