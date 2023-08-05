@@ -2,22 +2,18 @@ body {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
-#app {
-  display:flex;
-  flex-flow: row wrap;
-}
-#container {
+#first-year {
   display: flex;
-}
-#sorted-students {
-  display:flex;
   flex-flow: row wrap;
-}
-#container {
-  display:flex;
+  justify-content:center;
 }
 #dark-side {
-  display:flex;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+#cards {
+  display: flex;
   flex-flow: row wrap;
 }
 .sorted {
@@ -26,7 +22,9 @@ body {
   flex: 1;
 }
 .card {
-  margin: 10px;
+  padding: 30px;
+  margin: 25px;
+  flex: 0 1 30%;
 }
 img{
 height:280px;

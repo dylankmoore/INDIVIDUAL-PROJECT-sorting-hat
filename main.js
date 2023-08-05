@@ -17,7 +17,7 @@ const students = [
     house: "Slytherin",
     imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Draco_Mal.JPG/220px-Draco_Mal.JPG",
   },
-  
+
   {
     id: 4,
     name: "Harry Potter",
@@ -33,7 +33,7 @@ const students = [
 ];
 
 //expelled student array
-const badStudents = [
+const expelledStudents = [
 {
   id: 1,
   name: "Luna Lovegood",
@@ -69,13 +69,13 @@ const cardsOnDom = (students) => {
   </div>
 </div>`;
   };
-  renderToDom("#sorted-students", domString);
+  renderToDom("#first-year", domString);
 };
 
-const expelledOnDom = (badStudents) => {
+const expelledOnDom = (expelledStudents) => {
   let domString = "";
 
-  for (const student of badStudents) {
+  for (const student of expelledStudents) {
     domString += `
     <div class="card" style="width: 14rem;">
     <img src=${student.imageUrl} class="card-img-top" alt=${student.name}>
@@ -84,109 +84,116 @@ const expelledOnDom = (badStudents) => {
       <p class="house-type ${student.house}">${student.house}</p>
       <button class="btn btn-danger" id="delete--${student.id}">Bring back!</button>
     </div>
-  </div>`
-  };
+  </div>`;
+  }
   renderToDom("#dark-side", domString);
 }
 
-//filter students with house assignments
-const filter = (array, houseString) => {
+const filter = (array, houseName) => {
   const houseArray = [];
-
   for (const student of students) {
-    if (student.house === houseString) {
+    if (student.house === houseName) {
       houseArray.push(student);
     }
-}
+  }
   return houseArray;
-  };
+}
 
+//toggle form to appear and disappear
+const btn = document.getElementById('sort');
+btn.addEventListener('click', () => {
+  const form = document.getElementById('studentsForm');
+  if (form.style.display === 'none') {
+    form.style.display = 'block';
+  } else {
+    form.style.display = 'none';
+  }
+});
 
-  
+btn.addEventListener('click', () => {
+  const cards = document.getElementById('first-year');
+  if (cards.style.display === 'none') {
+    cards.style.display = 'flex';
+  } else {
+    cards.style.display = 'none';
+  }
+});
 
-  //target the buttoms to DOM
-  const showAllButton = document.querySelector("#btn-all");
-  const showGreenButton = document.querySelector("#btn-green");
-  const showBlueButton = document.querySelector("#btn-blue");
-  const showRedButton = document.querySelector("#btn-red");
-  const showYellowButton = document.querySelector("btn-yellow");
+btn.addEventListener('click', () => {
+  const cards = document.getElementById('dark-side');
+  if (cards.style.display === 'none') {
+    cards.style.display = 'flex';
+  } else {
+    cards.style.display = 'none';
+  }
+});
 
-  //click event showing cards with button clicks
-  showAllButton.addEventListener("click",() => {
-    cardsOnDom(students);
-  });
-  //filtering types
-  showGreenButton.addEventListener("click", () => {
-    const greenButton = filter(students, "Gryffindor");
-    cardsOnDom(greenButton);
-  });
+//filter student buttons
+const eventListeners = () => {
+  document.querySelector("#buttons").addEventListener('click', (e) => {
+    if (e.target.id == "btn-all"){
+      cardsOnDom(students);
+    } else if (e.target.id == "btn-green") {
+      cardsOnDom(students.filter(student => student.house === "Gryffindor"));
+    } else if (e.target.id == "btn-blue") {
+      cardsOnDom(students.filter(student => student.house == "Hufflepuff"));
+    } else if (e.target.id == "btn-red") {
+      cardsOnDom(students.filter(student => student.house == "Ravenclaw"));
+    } else if (e.target.id == "btn-yellow") {
+      cardsOnDom(students.filter(student => student.house == "Slytherin"));
+    };
+  })
+};
 
-  showBlueButton.addEventListener("click", () => {
-    const blueButton = filter(students, "Hufflepuff");
-    cardsOnDom(blueButton);
-  });
+const form = document.querySelector('form');
 
-  showRedButton.addEventListener("click", () => {
-    const redButton = filter (students, "Ravenclaw");
-    cardsOnDom(redButton);
-  });
-
-  showYellowButton.addEventListener("click", () => {
-    const yellowButton = filter(students, "Slytherin");
-    cardsOnDom(yellowButton);
-  });
-
-//randomize houses
-  const createStudent = (e) => {
-    e.preventDefault();
-    const assignHouse = () => {
-      const assigned = Math.floor(Math.random() * 4 + 1);
-    switch (assigned) {
-      case 1:
-        return "Ravenclaw";
+const createStudent = (e) => {
+  e.preventDefault(); 
+  const assignHouse = () => {
+    const assigned = Math.floor(Math.random() * 4 + 1);
+    switch(assigned) {
+      case 1: 
+        return 'Gryffindor'
         break;
       case 2:
-        return "Huffleuff";
+        return 'Hufflepuff'
         break;
       case 3:
-        return "Slytherin";
+        return 'Ravenclaw'
         break;
-     case 4:
-        return "Gryffindor";
-        break;         
+      case 4:
+        return 'Slytherin'
     }
-  }
+};
 
-
-  //adding student form
-  const newStudentObj = {
+const newStudent = {
   id: students.length + 1,
-  name: document.querySelector("#fullname").value,
+  name: document.querySelector("#studentsname").value,
   house: assignHouse(),
   imageUrl: document.querySelector("#image").value
-  }
+}
+students.push(newStudent);
+cardsOnDom(students);
+form.reset();
+}
 
-  students.push(newStudentObj);
+form.addEventListener("submit", createStudent);
+
+const app = document.querySelector("first-year");
+app.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = students.findIndex((student) => student.id === Number(id));
+    const expelledStudent = students.splice(index, 1)[0];
+    expelledStudents.push(expelledStudent);
+    cardsOnDom(students);
+    expelledOnDom(expelledStudents);
+  }
+});
+const startApp = () => {
+  eventListeners();
   cardsOnDom(students);
-  form.reset();
-  }
-
-  form.addEventListener('submit, createStudent')
-
-
-  const startApp = () => {
-    const sorted = document.querySelector("#sorted-students");
-    app.addEventListener('click', (e) => {
-      if (e.target.id.includes("delete")) {
-        const [, id] = e.target.id.split("--");
-        const index = students.findIndex(e => e.id ===Number (id));
-        const deathEater = students.splice(index, 1);
-        darkSide.push(deathEater[0]);
-
-        cardsOnDom(students);
-        darkCards(darkSide);
-      }
-    })
-  }
+  expelledOnDom(expelledStudents);
+}
+startApp();
   
-    startApp();
