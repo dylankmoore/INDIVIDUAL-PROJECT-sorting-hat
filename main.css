@@ -12,20 +12,6 @@ body {
   flex-flow: row wrap;
   justify-content: center;
 }
-#cards {
-  display: flex;
-  flex-flow: row wrap;
-}
-.sorted {
-  display: flex;
-  align-content: flex-start;
-  flex: 1;
-}
-.card {
-  padding: 30px;
-  margin: 25px;
-  flex: 0 1 30%;
-}
 img{
 height:280px;
 width:270px;
