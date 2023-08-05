@@ -9,43 +9,33 @@
 </head>
 <body>
 
- 
   <div class="container">
     <div class="card">
       <h1 class="card-title text-center"> Welcome to Hoggy Hoggy Warts, RELOADED!</h1>
       <p class="card-text text-center">Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats.</p><hr />
       <p class="card-text-2 text-center">Let's get you sorted!</p>
 
-    
-      <!-- first year student form -->
-      <form class="form-flex" id="studentsForm">
-        <div class="row mb-3">
-          <label for="inputText" class="form-label text-center" id="fullname"><B>Enter First Year's Name</B></label>
-          <label for="inputText" class="col-sm-2 col-form-label text-center">Student:</label>
-
-          <div class="col-sm-8">
-            <form class="row g-3">
-              <div class="col-auto">
-                <input type="text" 
-            class="form-control" 
-            placeholder="Draco Malfoy"
-            id="studentsName" required>
-
-            <div class="form-floating mb-3">
-              <input type="url" class="form-control" id="image" placeholder="upload file" required>
-               <label for="floatingInput">Image URL</label>
-              </div>
-              
-                <button type="submit" class="btn btn-primary mb-3" id="sortingBtn">Sort!</button>
-              </div>
-            </form>
-
-        </div></form></div>
+      <div id="form-container"></div>
+        <form class="form-flex">
+          <div class="col-sm-8" id="studentsForm"><form class="row g-3">
+        <input type="text" 
+          class="form-control" 
+          placeholder="Student's Name"
+          id="studentsName" required>
+   
+        <div class="form-floating mb-3">
+         <input type="url" class="form-control" id="image" placeholder="upload file" required>
+         <label for="floatingInput">Image URL</label></div>
+   
+         <button type="submit" class="btn btn-primary mb-3" id="sortingBtn">Sort!</button>
+        </div>
+      </form>
+    </div>
+  </form></div>
          <!-- end of the form -->
 
         <!-- filtering students -->
-        <div class="g-light row mb-3" id="filterForm">
-          <label for="inputText" class="form-label" text-center">Filter Students</label>
+        <div id="buttons>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <button class="btn btn-danger" id="btn-all">All Houses</button>
             <button class="btn btn-success" id="btn-green">Gryffindor</button>
@@ -54,28 +44,23 @@
             <button class="btn btn-warning" id="btn-yellow">Slytherin</button>
           </div>
         </div>
-  </div>
+      </div>
 
 
-<div id="container" class=card>
-</div>
+        <h4>First Year Students</h4>
+        <div id="first-year" role="list"></div>
+      </div>
   
-<div id="sorted-students" class="card">
-  <h4>First Year Students</h4>
-</div>
-
-<div id="dark-side" class="card">
-  <h4>Voldy's Army</h4><BR>
-
-  <h5>These students have joined the Dark Side!</h5>
-</div>
-</div>
+      <h4>Voldy's Army</h4>
+      <br>
+      <div id="dark-side" role="list"></div>
+      <h5>These students have joined the Dark Side!</h5>
+    </div>
 
 
-  <div id="app"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="main.js"></script>
   </body>
-    
+
   </html>
