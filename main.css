@@ -1,18 +1,42 @@
-body {
-  text-align: center;
+body{
   font-family: 'Courier New', Courier, monospace;
 }
-#first-year {
+#h1{
   display: flex;
-  flex-flow: row wrap;
-  justify-content:center;
-}
-#dark-side {
-  display: flex;
-  flex-flow: row wrap;
+  flex-direction:row;
+  flex-wrap: wrap;
   justify-content: center;
 }
-img{
-height:280px;
-width:270px;
+#h2{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#student-form{
+display: flex;
+flex-direction:row;
+flex-wrap: wrap;
+justify-content: center;
+}
+#sorting-hat{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#filter{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#house-buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+#cards{
+  display: flex;
 }
