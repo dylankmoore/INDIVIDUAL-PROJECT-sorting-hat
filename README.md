@@ -1,4 +1,10 @@
 # Sorting Hat
+The name of this project is the Sorting Hat. The overview of this project was to essentially create a list of students & the Hogwarts houses that they are assigned to, give the user the ability to expel students to Voldemort's Army, and then also bring them back to the good side of the students. The user will also be able to randomly sort themselves into one of the Hogwarts houses.
+
+Netlify link: https://sorting-hat-project-dkm.netlify.app/
+
+Loom video link:
+https://www.loom.com/share/0bbe5e19f9ff410dbfcad4814571b350
 
 ## Goals
 The goal of this project is to test your knowledge and to have a FUN time stretching yourself on your FIRST independent application that will become a part of your portfolio.
@@ -54,4 +60,3 @@ Think of a way you can expel students without just hiding those divs on the page
 ## Optional Bonus
 - House Colors: The color of the student's card changes depending on which house they were sorted.
 - Card Sorting/Ordering: Sort the student cards by some criteria (i.e. alphabetically by name, by house)
-
