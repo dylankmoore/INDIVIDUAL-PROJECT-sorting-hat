@@ -40,3 +40,13 @@ justify-content: center;
 #cards{
   display: flex;
 }
+#first-years{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#dark-side{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

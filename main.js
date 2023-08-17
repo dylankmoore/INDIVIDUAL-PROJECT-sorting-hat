@@ -114,6 +114,8 @@ const createStudent = (e) => {
   };
   students.push(newStudent);
   cardsOnDom(students);
+  const studentForm = document.querySelector("#submit-form");
+  studentForm.reset();
 };
 
 //button for sorting new students
